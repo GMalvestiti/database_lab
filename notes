@@ -1,0 +1,7 @@
+Aula 01:
+    https://www.postgresql.org/download/linux/ubuntu/
+
+    Configuração do banco de dados
+        Criação de conexão TCP/IP com o servidor
+            sudo nano /etc/postgresql/15/main/pg_hba.conf
+        
