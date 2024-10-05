@@ -4,3 +4,18 @@ Aula 01:
     Configuração do banco de dados
         Criação de conexão TCP/IP com o servidor
             sudo nano /etc/postgresql/15/main/pg_hba.conf
+
+Aula 02:
+    Comandos CLI:
+        psql -U postgres [-p 5432]
+        Meta comandos
+            \h [SELECT] (espaço para mais)
+            \l >> lista bases de dados
+            \du >> lista roles
+            \d[S] >> lista tabelas [do sistema]
+            \? >> lista meta comandos
+        CREATE DATABASE database_lab;
+        pipe ||
+        SELECT DISTINCT
+        WHERE
+        Ordem de processamento: FROM > WHERE > SELECT > ORDER BY
