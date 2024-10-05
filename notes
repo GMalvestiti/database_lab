@@ -4,4 +4,3 @@ Aula 01:
     Configuração do banco de dados
         Criação de conexão TCP/IP com o servidor
             sudo nano /etc/postgresql/15/main/pg_hba.conf
-        
