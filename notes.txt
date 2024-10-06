@@ -1,0 +1,47 @@
+Aula 01:
+    https://www.postgresql.org/download/linux/ubuntu/
+
+    Configuração do banco de dados
+        Criação de conexão TCP/IP com o servidor
+            sudo nano /etc/postgresql/15/main/pg_hba.conf
+
+Aula 02:
+    Comandos CLI:
+        psql -U postgres [-p 5432]
+        Meta comandos
+            \h [SELECT] (espaço para mais)
+            \l >> lista bases de dados
+            \du >> lista roles
+            \d[S] >> lista tabelas [do sistema]
+            \? >> lista meta comandos
+            \c <base> >> conecta em uma base de dados
+        CREATE DATABASE database_lab;
+    pipe ||
+    SELECT DISTINCT
+    WHERE
+    Ordem de processamento: FROM > WHERE > SELECT > ORDER BY
+
+Aula 03:
+    WHERE OR e AND
+    WHERE IN >> IN é mais perfomático que sequências de OR's
+    WHERE NOT IN
+    WHERE BETWEEN >> BETWEEN mais perfomático que IN
+    Wildcard '%' >> zero ou mais valores
+    ILIKE >> ignora o case, diferente do LIKE
+    Wildcard '_' >> qualquer um caractere
+    ESCAPE >> criação de carractere de escape para texto
+
+    Migração de base de dados
+        Comandos CLI:
+            CREATE DATABASE vr_40 WITH TEMPLATE vr; (criação com base em outra base)
+            SELECT pid FROM pg_stat_activity WHERE datname = 'vr';
+            SELECT pg_terminate_backend(<pid>);
+            ALTER DATABASE <base> OWNER TO <owner>;
+            ALTER DATABASE <base> WITH CONNECTION LIMIT = 50;
+            ALTER DATABASE <base> RENAME TO <nome>;
+            COPY <tabela> TO '/tml/tabela.csv' WITH CSV;
+        Comando pg_dump deve ser pelo terminal
+        Migração de dados:
+            Base já deve existir
+            pg_restore -U postgres -p 5432 -d vr -v -Fc /tmp/vr.backup
+            Também é possível fazer pelo pgAdmin

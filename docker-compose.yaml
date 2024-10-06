@@ -1,17 +1,18 @@
 services:
   postgres:
-    hostname: postgres
-    container_name: postgres
-    image: postgres:15-alpine
+    hostname: pgsql-14
+    container_name: pgsql-14
+    image: postgres:14-alpine
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
       - POSTGRES_DB=postgres
-      - PGDATA=/pgsql/15/data
+      - PGDATA=/pgsql/14/data
     ports:
       - 5432:5432
     volumes:
-      - ./.data:/pgsql/15/data
+      - ./.data:/pgsql/14/data
+      - ./.shared:/tmp
     networks:
       - pgsql_net
 
@@ -26,6 +27,8 @@ services:
       - 8500:80
     depends_on:
       - postgres
+    volumes:
+      - ./.pgadmin:/var/lib/pgadmin
     networks:
       - pgsql_net
 
