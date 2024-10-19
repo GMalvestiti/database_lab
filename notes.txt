@@ -55,3 +55,27 @@ Aula 04:
     JOINS
     NATURAL JOIN
     SELECT INTO
+
+Aula 05:
+    GROUP BY (agrupamento)
+    Funções de agregação
+        SUM
+        COUNT
+        AVG
+    ROUND
+    HAVING
+        filtro dos resultados agregados
+        WHERE acontece antes do agrupamento
+        HAVING acontece depois do agrupamento
+    UNION
+        usada para combinar resultados
+        necessita de mesma quantidade e tipo de colunas
+        colunas não precisam ter mesmo nome
+        por padrão remove as duplicidades
+        UNION ALL exibe duplicidades
+    INTERSECT
+        não precisa ter o mesmo nome de colunas como o natural join precisa
+        INTERSECT ALL
+    EXCEPT
+        apenas o que não tem na primeira tabela
+    CAST
