@@ -45,3 +45,13 @@ Aula 03:
             Base já deve existir
             pg_restore -U postgres -p 5432 -d vr -v -Fc /tmp/vr.backup
             Também é possível fazer pelo pgAdmin
+
+Aula 04:
+    Comandos:
+        Backup e Restauração
+            pg_dump -U postgres -p 5432 -d vr -v -Fc > /tmp/vr.dump
+            (CLI) CREATE DATABASE vr_restore;
+            pg_restore -U postgres -p 5432 -d vr_restore -v -Fc /tmp/vr.backup
+    JOINS
+    NATURAL JOIN
+    SELECT INTO
