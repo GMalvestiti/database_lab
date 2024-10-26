@@ -79,3 +79,12 @@ Aula 05:
     EXCEPT
         apenas o que não tem na primeira tabela
     CAST
+
+Aula 06:
+    Subconsultas/Subqueries
+        Geralmente para filtros/WHERE dinâmicos
+    CTE (Common Table Expressions)
+        WITH
+        WITH RECURSIVE
+            CREATE DATABASE cte;
+            string_agg(mc.descricao, ' >> ' ORDER BY mc.nivel DESC)
