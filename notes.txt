@@ -88,3 +88,44 @@ Aula 06:
         WITH RECURSIVE
             CREATE DATABASE cte;
             string_agg(mc.descricao, ' >> ' ORDER BY mc.nivel DESC)
+
+Aula 07:
+    DML
+    INSERT
+    RETURNING
+    UPDATE
+    função postgres: INTERVAL
+    coluna especial: ctid >> id da linha
+    UPDATE com JOIN
+        O PostgreSQL não permite usar o JOIN em UPDATE igual no MySQL, sendo de outra forma.
+    DELETE
+        USING >> forma para realizar 'JOIN' em DELETE
+        Subconsultas é uma outra forma para JOIN
+    UPSERT
+        Insere se não existir ou UPDATE caso existir
+        Conhecio como UPSERT porém realizado através do INSERT
+        ON CONFLICT
+            id >> coluna para verificar o conflito
+            DO NOTHING
+            DO UPDATE
+                EXCLUDED >> palavra reservada para referenciar a linha a ser inserida
+    TRUNCATE
+        Redefine a tabela, mais performático que DELETE
+
+Aula 08:
+    Performance
+        Otimização de Consultas x Configurações
+    Configurações
+        Memória
+            work_mem
+            hash_mem_multiplier
+            shared_buffers
+                recomendado 25%-40% da RAM na maioria dos casos
+            effective_cache_size
+        I/O
+            effective_io_concurrency
+            seq_page_cost and random_page_cost
+        Estatísticas
+            default_statistics_target
+    Índices
+    VACUUM
