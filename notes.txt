@@ -129,3 +129,25 @@ Aula 08:
             default_statistics_target
     Índices
     VACUUM
+
+Aula 09:
+    pgtune: https://pgtune.leopard.in.ua/
+    pgtune não mostra, para nossa situação:
+        enable_partitionwise_join = on
+        enable_partitionwise_aggregate = on
+        default_statistics_target = 1000
+            afeta a decisão de usar ou não busca sequencial
+            aumentar de 500 em 500
+    sudo find / -name postgresql.conf
+    sudo systemctl restart postgresql@14-main.service
+    pgtune ALTER SYSTEM >> postgresql.auto.conf
+        postgresql.auto.conf priorizada sobre postgresql.conf
+        ALTER SYSTEM [SET | RESET]
+        ALTER SYSTEM RESET ALL
+        context que não são postmaster ou internal não precisam reiniciar o postgresql
+    EXPLAIN ANALYZE
+    CREATE INDEX
+    pgbench
+    postgresqltuner
+    EXTENSION pg_stat_statements
+        pode mostrar indíces não utilizados

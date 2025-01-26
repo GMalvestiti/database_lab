@@ -4,8 +4,8 @@
 -- número de registros retornados.
 SELECT * FROM venda LIMIT 1000;
 
--- Essa consulta, por outro lado, pode ser lenta, especialmente se a 
--- tabela for grande. O PostgreSQL precisa varrer toda a tabela para 
+-- Essa consulta, por outro lado, pode ser lenta, especialmente se a
+-- tabela for grande. O PostgreSQL precisa varrer toda a tabela para
 -- encontrar os registros que satisfazem a condição valortotal > 200.
 SELECT * FROM venda WHERE valortotal > 200;
 
@@ -19,7 +19,7 @@ ANALYZE venda;
 
 EXPLAIN ANALYZE SELECT * FROM venda WHERE valortotal > 200;
 
--- Sem um índice, o banco de dados teria que varrer toda a tabela venda 
+-- Sem um índice, o banco de dados teria que varrer toda a tabela venda
 -- para encontrar os registros que atendem ao critério valortotal > 200.
 -- Com índices o banco de dados pode localizar rapidamente
 -- os registros correspondentes, sem precisar varrer toda a tabela.
@@ -33,11 +33,11 @@ EXPLAIN ANALYZE SELECT * FROM venda WHERE valortotal > 200;
 -- 4. Colunas utilizadas em joins;
 
 -- Dicas:
--- 1. Evitar o excesso de índices: Muitos índices podem prejudicar o desempenho 
+-- 1. Evitar o excesso de índices: Muitos índices podem prejudicar o desempenho
 -- de inserções, atualizações e deleções;
--- 2. Monitorar o desempenho: Utilize ferramentas como EXPLAIN ANALYZE para 
+-- 2. Monitorar o desempenho: Utilize ferramentas como EXPLAIN ANALYZE para
 -- verificar se os índices estão sendo utilizados corretamente.
--- 3. Ajustar os índices conforme necessário: À medida que sua base de dados evolui, 
+-- 3. Ajustar os índices conforme necessário: À medida que sua base de dados evolui,
 -- você pode precisar ajustar os índices.
 
 SELECT	i.relname "Nome da Tabela",
