@@ -151,3 +151,39 @@ Aula 09:
     postgresqltuner
     EXTENSION pg_stat_statements
         pode mostrar indíces não utilizados
+
+Aula 10:
+    CREATE TABLE
+    tipos de dados:
+        boolean
+        serial
+        char
+        varchar
+            apenas os caracteres que usou
+        text
+        integer
+        numeric/decimal
+        date
+        interval
+        numeric[] >>> array
+        json
+        jsonb
+            converte para binário e permite usar índices
+        uuid
+            gen_random_uuid()
+                melhor performance que uuid_generate_v4()
+    DEFAULT
+    CREATE TEMP TABLE
+        existe apenas durante a sessão
+    WITH NO DATA
+    constraints:
+        CHECK
+        PRIMARY KEY
+        NOT NULL
+        UNIQUE
+        FOREIGN KEY
+    CREATE SEQUENCE
+    PostGIS
+    CREATE EXTENSION
+    CREATE SCHEMA
+    \d+ tabela >>> exibe estrutura detalhada da tabela
