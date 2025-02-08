@@ -187,3 +187,64 @@ Aula 10:
     CREATE EXTENSION
     CREATE SCHEMA
     \d+ tabela >>> exibe estrutura detalhada da tabela
+
+Aula 11:
+    Replicação
+        pode ser síncrona ou assíncrona
+    terminal:
+        pg_createcluster 14 master
+    editar WRITE-AHEAD LOG (WAL) de postgresql.conf
+        wal_level = replica
+        max_wal_senders = 10
+        max_replication_slots = 10
+        wal_keep_size = 64MB (deve ser acompanhado)
+        wal_level = logical >>> apenas dados/tabelas específicos
+    editar CONNECTIONS AND AUTHENTICATION de postgresql.conf
+        listen_adresses = '*' (ideal colocar hosta a host)
+        (motivo é a conexão entre os servidores primários e secundários)
+    editar pg_hba.conf
+        host    replication     replicador      0.0.0.0/0               scram-sha-256
+        replicador >>> usuário
+        0.0.0.0/0 >>> IP da máquina secundária em uma situação real
+    terminal:
+        pg_ctlcluster 14 master start
+        psql -U postgres
+            CREATE USER replicador WITH REPLICATION PASSWORD '123';
+        \du
+    pg_lsclusters >>> lista clusters
+    replicação apenas na mesma versão major
+    cluster secundário:
+        pg_createcluster 14 slave
+        remover todos os dados de /var/lib/postgresql/14/slave
+            rm -rf ./*
+        pg_basebackup -h <IP> -p <PORT> -U replicador -D /var/lib/postgresql/14/slave -Fp -Xs -P -R
+            backup no nível de sistema de arquivos
+            -p >>> caso port diferente
+        pg_ctlcluster 14 slave start
+    postgresql.auto.conf >>> configurações de conexão com o servidor primário
+    replicação por slots
+        (usando o mesmo servidor main na aula)
+    servidores S (slot) e M (master):
+        pg_createcluster 14 slot (S)
+        cd /var/lib/postgresql/14/slot (S)
+        rm -rf ./* (S)
+        CLI (M)
+            SELECT * FROM pg_create_physical_replication_slot('slot_1');
+            SELECT slot_name, slot_type, active FROM pg_replication_slots;
+            SELECT pg_current_wal_lsn(); >>> monitoramento da replicação
+        Criando arquivo de configuração de forma manual (S)
+            (equivalente ao -R)
+            su postgres
+            pg_basebackup -h <IP> -p <PORT> -U replicador -D /var/lib/postgresql/14/slave -Fp -Xs -P
+            touch standby.signal
+            cd /etc/postgresql/14/slot
+            nano postgresql.conf
+                primary_conninfo = 'host=<IP> port=<PORT> user=replicador password=123'
+                primary_slot_name = 'slot_1'
+            CLI
+                SELECT pg_last_wal_receive_lsn(); >>> monitoramento da replicação
+    promoção de um servidor secudário
+        (cenário em que o principal caiu)
+        pg_ctlcluster 14 slot promote
+        quando o master voltar, refaz a replicação e promove ele
+        uma vez promovido não tem como desfazer
