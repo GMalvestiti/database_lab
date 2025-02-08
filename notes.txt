@@ -248,3 +248,18 @@ Aula 11:
         pg_ctlcluster 14 slot promote
         quando o master voltar, refaz a replicação e promove ele
         uma vez promovido não tem como desfazer
+
+Aula 12:
+    Usuários e permissões
+    roles
+        CREATE ROLE
+    \du >>> display users
+    WITH LOGIN
+    CREATE USER
+        já cria com permissões de login
+    ALTER ROLE
+    WITH PASSWORD
+    WITH CREATEDB
+    GRANT
+    permissões nas tabelas em si
+    REVOKE
