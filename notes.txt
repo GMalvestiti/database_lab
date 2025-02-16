@@ -263,3 +263,14 @@ Aula 12:
     GRANT
     permissões nas tabelas em si
     REVOKE
+
+Aula 13:
+    Row level security
+    ALTER TABLE tabela ENABLE ROW LEVEL SECURITY;
+    SET ROLE
+    RESET ROLE
+    CREATE POLICY
+
+Aula 14:
+    Linguagem Procedural (PL/pgSQL) no PostgreSQL
+    CREATE OR REPLACE FUNCTION

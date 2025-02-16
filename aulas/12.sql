@@ -20,7 +20,7 @@ CREATE ROLE gustavo WITH LOGIN PASSWORD '123' IN ROLE grupo_alunos;
 
 SET ROLE grupo_alunos;
 
-GRANT SELECT ON tabela TO gustavo;
+GRANT SELECT ON TABLE tabela TO gustavo;
 
 REVOKE SELECT ON TABLE tabela FROM gustavo;
 
