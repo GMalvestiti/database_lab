@@ -275,3 +275,13 @@ Aula 14:
     Linguagem Procedural (PL/pgSQL) no PostgreSQL
     $$ >>> delimitador
     CREATE OR REPLACE FUNCTION
+
+Aula 15:
+    CASE WHEN
+
+Aula 16:
+    BEGIN
+    COMMIT
+    ROLLBACK
+    EXCEPTION
+    SELECT * FROM pg_locks;
