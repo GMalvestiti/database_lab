@@ -273,4 +273,5 @@ Aula 13:
 
 Aula 14:
     Linguagem Procedural (PL/pgSQL) no PostgreSQL
+    $$ >>> delimitador
     CREATE OR REPLACE FUNCTION
