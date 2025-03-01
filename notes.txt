@@ -285,3 +285,24 @@ Aula 16:
     ROLLBACK
     EXCEPTION
     SELECT * FROM pg_locks;
+
+Aula 17:
+    data corruption
+    principais causas
+        hardware em más condições
+        software defasado
+        negligência
+    fsync
+        otimizar leitura e escrita
+        wal_sync_method
+    backup fisico x lógico
+        pg_basebackup >>> físico
+        pg_dump/pg_dumpall >>> lógico
+    pg_resetwal
+        redefine wal
+        casos extremos, quando postgresql nem inicia
+    realizar backup antes de tratar os dados
+    recomendado restaurar em outro cluster após correção
+    pg_amcheck
+        verifica corrupção
+        extensão contrib
