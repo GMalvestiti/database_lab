@@ -306,3 +306,9 @@ Aula 17:
     pg_amcheck
         verifica corrupção
         extensão contrib
+
+Aula 18:
+    point-in-time recovery (pitr)
+    utiliza arquivos wal
+    necessário habilitar recurso
+    necessário base backup
